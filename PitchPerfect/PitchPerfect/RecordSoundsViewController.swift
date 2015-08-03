@@ -22,8 +22,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         audioSession = AVAudioSession.sharedInstance()
-    audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
-    audioSession.setActive(true, error: nil)
+        audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+        audioSession.setActive(true, error: nil)
         
         let docsDir: AnyObject = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
         let soundFilePath = docsDir.stringByAppendingPathComponent("recordedAudio.caf")

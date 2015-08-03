@@ -55,9 +55,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVe-5c-bag">
                                 <rect key="frame" x="275" y="489" width="50" height="50"/>
-                                <state key="normal" image="stop2x-iphone_50">
+                                <state key="normal" image="pause_80_blue">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pauseResumePlayBack:" destination="zZa-qc-eU8" eventType="touchUpInside" id="kOx-Kp-tvu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,6 +85,7 @@
                         <outlet property="fastButton" destination="j2m-cz-m0C" id="yto-Ux-dSa"/>
                         <outlet property="highPitchButton" destination="tlr-64-Ods" id="pEy-Df-htl"/>
                         <outlet property="lowPitchButton" destination="vN3-iO-pqc" id="Eqt-qp-HMR"/>
+                        <outlet property="pauseResumeButton" destination="vVe-5c-bag" id="bK8-BW-bCd"/>
                         <outlet property="slowButton" destination="ExT-GA-mfE" id="Ag2-2M-Pkm"/>
                     </connections>
                 </viewController>
@@ -112,7 +116,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUP-NU-LBS">
                                 <rect key="frame" x="289" y="530" width="50" height="50"/>
-                                <state key="normal" image="stop2x-iphone_50">
+                                <state key="normal" image="stop2x-iphone_80">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -164,7 +168,8 @@
         <image name="darthvader2x-iphone_100" width="100" height="100"/>
         <image name="fast2x-iphone_100" width="100" height="100"/>
         <image name="microphone2x-iphone_100" width="100" height="100"/>
+        <image name="pause_80_blue" width="80" height="80"/>
         <image name="slow2x-iphone_100" width="100" height="100"/>
-        <image name="stop2x-iphone_50" width="50" height="50"/>
+        <image name="stop2x-iphone_80" width="80" height="80"/>
     </resources>
 </document>
