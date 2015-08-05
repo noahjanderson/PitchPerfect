@@ -44,15 +44,6 @@
                                     <action selector="playAudio:" destination="zZa-qc-eU8" eventType="touchUpInside" id="CJa-N8-WMK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="redraw" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vN3-iO-pqc">
-                                <rect key="frame" x="409" y="299" width="100" height="100"/>
-                                <state key="normal" image="darthvader2x-iphone_100">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playAudio:" destination="zZa-qc-eU8" eventType="touchUpInside" id="DPa-Go-kDp"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVe-5c-bag">
                                 <rect key="frame" x="275" y="489" width="50" height="50"/>
                                 <state key="normal" image="pause_80_blue">
@@ -60,6 +51,15 @@
                                 </state>
                                 <connections>
                                     <action selector="pauseResumePlayBack:" destination="zZa-qc-eU8" eventType="touchUpInside" id="kOx-Kp-tvu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="redraw" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vN3-iO-pqc">
+                                <rect key="frame" x="409" y="299" width="100" height="100"/>
+                                <state key="normal" image="darthvader2x-iphone_100">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAudio:" destination="zZa-qc-eU8" eventType="touchUpInside" id="DPa-Go-kDp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -105,38 +105,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARl-Ug-LMQ">
-                                <rect key="frame" x="277" y="191" width="75" height="75"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00L-Gl-GFX">
+                                <rect key="frame" x="250" y="250" width="100" height="100"/>
                                 <state key="normal" image="microphone2x-iphone_100">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="inf-0g-aWG"/>
+                                    <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ce3-U4-OGZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUP-NU-LBS">
-                                <rect key="frame" x="289" y="530" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wD4-bj-HdY">
+                                <rect key="frame" x="250" y="480" width="100" height="100"/>
                                 <state key="normal" image="stop2x-iphone_80">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wgR-mi-ZQw"/>
+                                    <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Hh-5l-Grm"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyh-qa-WMC">
+                                <rect key="frame" x="251" y="364" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.10196078431372549" green="0.2196078431372549" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="GUP-NU-LBS" secondAttribute="centerX" constant="-14" id="Izf-Fp-dnv"/>
-                            <constraint firstItem="GUP-NU-LBS" firstAttribute="top" secondItem="ARl-Ug-LMQ" secondAttribute="bottom" constant="264" id="JlD-zM-YKJ"/>
-                            <constraint firstAttribute="centerY" secondItem="ARl-Ug-LMQ" secondAttribute="centerY" constant="71.5" id="RIO-uE-jr7"/>
-                            <constraint firstAttribute="centerX" secondItem="ARl-Ug-LMQ" secondAttribute="centerX" constant="-14.5" id="jTs-4O-tex"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GUP-NU-LBS" secondAttribute="bottom" constant="20" id="mqI-Xs-1Pj"/>
+                            <constraint firstItem="Kyh-qa-WMC" firstAttribute="top" secondItem="00L-Gl-GFX" secondAttribute="bottom" constant="20" id="00Y-wj-0aD"/>
+                            <constraint firstAttribute="centerX" secondItem="Kyh-qa-WMC" secondAttribute="centerX" id="Dyw-2f-oLk"/>
+                            <constraint firstAttribute="centerY" secondItem="00L-Gl-GFX" secondAttribute="centerY" id="bwW-iz-Ety"/>
+                            <constraint firstAttribute="centerX" secondItem="wD4-bj-HdY" secondAttribute="centerX" id="dWo-SJ-qUp"/>
+                            <constraint firstAttribute="centerX" secondItem="00L-Gl-GFX" secondAttribute="centerX" id="ovZ-5Y-kdJ"/>
+                            <constraint firstAttribute="bottom" secondItem="wD4-bj-HdY" secondAttribute="bottom" constant="20" id="v3v-MI-suU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TgO-lv-g5R"/>
                     <connections>
-                        <outlet property="recordBtn" destination="ARl-Ug-LMQ" id="mT5-pr-m1z"/>
-                        <outlet property="stopBtn" destination="GUP-NU-LBS" id="159-ex-6JH"/>
+                        <outlet property="recordBtn" destination="00L-Gl-GFX" id="KJi-GQ-Efr"/>
+                        <outlet property="recordingLabel" destination="Kyh-qa-WMC" id="XWD-su-wmI"/>
+                        <outlet property="stopBtn" destination="wD4-bj-HdY" id="dNy-af-8TI"/>
                         <segue destination="zZa-qc-eU8" kind="show" identifier="StoppedRecording" id="9AD-Ra-880"/>
                     </connections>
                 </viewController>

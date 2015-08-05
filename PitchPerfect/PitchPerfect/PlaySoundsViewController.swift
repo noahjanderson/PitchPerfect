@@ -19,7 +19,6 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     var receivedAudio: RecordedAudio!
     var audioEngine: AVAudioEngine!
     var audioFile: AVAudioFile!
-    var playingWithRate: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,26 +37,16 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     }
 
     @IBAction func pauseResumePlayBack(sender: AnyObject) {
-        if playingWithRate{
-            if audioPlayer.playing{
-                audioPlayer.pause()
-                togglePauseResumeButton(false)
-            }
-            else{
-                audioPlayer.play()
-                togglePauseResumeButton(true)
-            }
+        
+        if audioEngine.running{
+            audioEngine.pause()
+            togglePauseResumeButton(false)
         }
         else{
-            if audioEngine.running{
-                audioEngine.pause()
-                togglePauseResumeButton(false)
-            }
-            else{
-                audioEngine.startAndReturnError(nil)
-                togglePauseResumeButton(true)
-            }
+            audioEngine.startAndReturnError(nil)
+            togglePauseResumeButton(true)
         }
+        
     }
 
     @IBAction func playAudio(sender: UIButton) {
@@ -65,49 +54,48 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         togglePauseResumeButton(true)
         switch sender{
             case slowButton:
-                playAudioAtRate(0.5)
+                playAudio(0.5, pitch: 1.0)
                 break
             case fastButton:
-                playAudioAtRate(2.0)
+                playAudio(2.0, pitch: 1.0)
                 break
-            case sender:
-                playAudioAtPitch(1000.0)
+            case highPitchButton:
+                playAudio(1.0, pitch: 1000.0)
                 break
             case lowPitchButton:
-                playAudioAtPitch(-500.0)
+                playAudio(1.0, pitch: -500.0)
                 break
             default:
                 break
         }
     }
     
-    func playAudioAtRate(rate: Float){
-        playingWithRate = true
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioPlayer.currentTime = 0.0
-        audioPlayer.rate = rate
-        audioPlayer.play()
-    }
-    
-    func playAudioAtPitch(pitch: Float){
-        playingWithRate = false
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+    func playAudio(rate: Float, pitch: Float){
+        resetAudioObjects()
         var audioPlayerNode: AVAudioPlayerNode! = AVAudioPlayerNode()
         var audioPitchNode: AVAudioUnitTimePitch! = AVAudioUnitTimePitch()
+        var audioRateNode: AVAudioUnitVarispeed! = AVAudioUnitVarispeed()
         audioPitchNode.pitch = pitch
+        audioPitchNode.rate = rate
         audioEngine.attachNode(audioPlayerNode)
         audioEngine.attachNode(audioPitchNode)
+        audioEngine.attachNode(audioRateNode)
         audioEngine.connect(audioPlayerNode, to: audioPitchNode, format: nil)
-        audioEngine.connect(audioPitchNode, to: audioEngine.outputNode, format: nil)
+        audioEngine.connect(audioPitchNode, to: audioRateNode, format: nil)
+        audioEngine.connect(audioRateNode, to: audioEngine.outputNode, format: nil)
         audioPlayerNode.scheduleFile(audioFile, atTime: nil,completionHandler: { () -> Void in
             self.pauseResumeButton.enabled = false
             self.togglePauseResumeButton(true)
         })
         audioEngine.startAndReturnError(nil)
         audioPlayerNode.play()
+    }
+    
+    func resetAudioObjects(){
+        audioPlayer.stop()
+        audioPlayer.currentTime = 0.0
+        audioEngine.stop()
+        audioEngine.reset()
     }
     
     func togglePauseResumeButton(pause: Bool){
